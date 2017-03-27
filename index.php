@@ -21,6 +21,12 @@ $jaar_eind = '';
 
 $velden = '';
 
+$sqlGetKlas = "SELECT * FROM `klas`;";
+$resultGetKlas = $DB->_query($sqlGetKlas);
+
+$sqlGetVak = "SELECT * FROM `vak`;";
+$resultGetVak = $DB->_query($sqlGetVak);
+
 if (isset($_POST) && !empty($_POST)) {
 
     $boolError = false;
@@ -88,6 +94,12 @@ if (isset($_POST) && !empty($_POST)) {
 
     if ($boolError === false) {
 
+        $sqlDocent = "INSERT INTO `docent` 
+                SET 
+                `voornaam` = '".$_POST['docent']."',
+                `email` = '".$_POST['email']."'
+                ";
+
         $sql = "INSERT INTO `tijdlijn`
                 SET
                 `titel` = '" . $_POST['titel'] . "',
@@ -97,16 +109,20 @@ if (isset($_POST) && !empty($_POST)) {
                 `jaar_eind` = '" . $_POST['jaar_eind'] . "',
                 `aantal_elementen` = '" . $_POST['aantal_elementen'] . "',
 
-                `url_id` = '" . $_POST['klas'] . "',
                 `vak_id` = '" . $_POST['vak'] . "',
                 `klas_id` = '" . $_POST['klas'] . "',
+                
                 `docent_id` = '" . $_POST['vak'] . "',
 
                 `createdate` = NOW()
                 ";
 
+                //`url_id` = '" . $_POST['klas'] . "',
+
         $sql3 = "SELECT `id` FROM `tijdlijn` ORDER BY id DESC LIMIT 0, 1";
-       
+        
+        $DB->_query($sqlDocent);
+
         if ($DB->_query($sql)) {
 
             $last_id = $DB->_query($sql3);
@@ -141,7 +157,7 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
     } else {
-        $velden = "Ff alles invullen he";
+        $velden = "Niet alle velden zijn ingevuld!";
     }
 
 } 
@@ -159,28 +175,30 @@ include ('header.php');
             include 'login.php';
         ?>
 
-        <form class="form-nieuws" method="post">
+        <form class="form-nieuws" method="post" id="Form1" style="display: none;">
             
             <input id="docent" class="<?= $docent ?> form-control" type="text" placeholder="Naam docent" name="docent" value="<?= isset($_POST['docent']) ? $_POST['docent'] : '' ?>">
             <br>
             <input id="email" class="<?= $email ?> form-control" type="email" placeholder="Email adres docent" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
             <br>
             <select id="klas" class="<?= $klas ?> form-control" name="klas">
-                <option value="<?= isset($_POST['klas']) ? $_POST['klas'] : '0' ?>">
-                    IS108
-                </option>
-                <option value="<?= isset($_POST['klas']) ? $_POST['klas'] : '1' ?>">
-                    IS108 GOED
-                </option>
+                <?php 
+                while ($row = mysqli_fetch_assoc($resultGetKlas)) { ?>
+                 <option value="<?= isset($_POST['klas']) ? $_POST['klas'] : $row['id'] ?>">
+                <?php echo $row['naam'];?>
+                 </option>
+                <?php } ?>
+                
             </select>
             <br>
             <select id="vak" class="<?= $vak ?> form-control" name="vak">
-                <option value="<?= isset($_POST['vak']) ? $_POST['vak'] : '0' ?>">
-                    Geschiedenis
-                </option>
-                <option value="<?= isset($_POST['vak']) ? $_POST['vak'] : '1' ?>">
-                    Geschiedenis GOED
-                </option>
+                <?php
+                while ($row = mysqli_fetch_assoc($resultGetVak)) { ?>
+                 <option value="<?= isset($_POST['vak']) ? $_POST['vak'] : $row['id'] ?>">
+                <?php echo $row['naam'];?>
+                 </option>
+                <?php } ?>
+                
             </select>
             </br></br>
             <input id="titel" class="<?= $titel ?> form-control" type="text" placeholder="Titel tijdlijn" name="titel" value="<?= isset($_POST['titel']) ? $_POST['titel'] : '' ?>">
@@ -200,12 +218,13 @@ include ('header.php');
                 <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
                 </em>
             </div>
-            </br>    
+            
             <div class="gabutton">
                 <input type="submit" value="Creeer tijdlijn">
             </div>
             
             <?php } ?>
         
-        </form>
-<?php include('footer.php') ?>
+        </form> </br><?php include('loguit.php'); ?>
+</br>
+ <?php include('footer.php'); ?> 

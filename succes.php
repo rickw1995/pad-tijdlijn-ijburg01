@@ -11,7 +11,7 @@ include ('header.php');
 
 ?>
 
-       <p> Lekker pik! </p>
-
+       <p> De tijdlijn is met succes aangemaakt! </p>
+		
        
       <?php include('footer.php') ?>
