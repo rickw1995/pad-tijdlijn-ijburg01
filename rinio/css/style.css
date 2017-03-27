@@ -16,26 +16,4 @@ body {
 h3 {
   text-transform: uppercase; }
 
-aside {
-      margin: 0 auto;
-    width: 50%;
-    padding: 10px;
-    background: white;
-}
-
-header {
-  width: 100%;
-  padding: 5px 0 5px 0;
-  background: white;
-  margin: 0 auto;
-  text-align: center;
-
-}
-
-footer {
-  width: 100%;
-  background: white;
-  text-align: center;
-}
-
 /*# sourceMappingURL=style.css.map */

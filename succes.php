@@ -17,7 +17,7 @@ if ($last_id->num_rows > 0) {
     }
 }
 
-$createURL = "tijdlijn".$last_id2."/";
+$createURL = "tijdlijn.php?tid=".$last_id2;
 
 $sql2 = "INSERT INTO `url_tijdlijn` SET tijdlijn_id = '".$last_id2."', url = '".$createURL."'";
 $DB->_query($sql2);
@@ -38,9 +38,9 @@ $DB->_query($sql4);
 include ('header.php');
 
 ?>
-
+<aside>
        <p> De tijdlijn is met succes aangemaakt! </p>
 		<a href="<?php echo $createURL ?>" target="_blank">Klik hier om naar je tijdlijn te gaan.</a>
 
-       
+     </aside>  
       <?php include('footer.php') ?>

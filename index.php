@@ -9,6 +9,7 @@ require('classes/recaptchalib.php');
 $DB = Database::getInstance();
 
 $docent = '';
+$docent2 = '';
 $email = '';
 $klas = '';
 $vak = '';
@@ -64,12 +65,19 @@ if (isset($_POST) && !empty($_POST)) {
         $boolError = true;
     }
 
-    if (!isset($_POST['jaar_start']) || trim($_POST['jaar_start']) == '') {
+    if (
+        !isset($_POST['jaar_start'])
+        || trim($_POST['jaar_start']) == ''
+        || !preg_match('/^\d+$/', $_POST['jaar_start'])
+    ) {
         $jaar_start  = 'error';
         $boolError = true;
     } 
-
-    if (!isset($_POST['jaar_eind']) || trim($_POST['jaar_eind']) == '') {
+    if (
+        !isset($_POST['jaar_eind'])
+        || trim($_POST['jaar_eind']) == ''
+        || !preg_match('/^\d+$/', $_POST['jaar_eind'])
+    ) {
         $jaar_eind  = 'error';
         $boolError = true;
     } 
@@ -91,9 +99,17 @@ if (isset($_POST) && !empty($_POST)) {
                 `email` = '".$_POST['email']."'
                 ";
 
+        $DB->_query($sqlDocent);
+
+        $getDocent = "SELECT `id` FROM `docent` ORDER BY id DESC LIMIT 0, 1";
+
+        $docentID = $DB->_query($getDocent);
+        if ($docentID->num_rows > 0) {
+            while($row40 = $docentID->fetch_assoc()) {
+                $docent2 = $row40['id'];}}
+
         $sql = "INSERT INTO `tijdlijn`
-                SET
-                `titel` = '" . $_POST['titel'] . "',
+                SET `titel` = '" . $_POST['titel'] . "',
                 `beschrijving` = '" . $_POST['beschrijving'] . "',
                 `afbeelding_url` = '" . $_POST['afbeeldingURL'] . "',
                 `jaar_start` = '" . $_POST['jaar_start'] . "',
@@ -103,16 +119,13 @@ if (isset($_POST) && !empty($_POST)) {
                 `vak_id` = '" . $_POST['vak'] . "',
                 `klas_id` = '" . $_POST['klas'] . "',
                 
-                `docent_id` = '" . $_POST['vak'] . "',
+                `docent_id` = ".$docent2.",
 
                 `createdate` = NOW()
                 ";
 
-                //`url_id` = '" . $_POST['klas'] . "',
 
         $sql3 = "SELECT `id` FROM `tijdlijn` ORDER BY id DESC LIMIT 0, 1";
-        
-        $DB->_query($sqlDocent);
 
         if ($DB->_query($sql)) {
 
@@ -134,7 +147,7 @@ if (isset($_POST) && !empty($_POST)) {
 
 
            // echo "0 results";
-            $newURL = "tijdlijn.php";
+            $newURL = "tijdlijn-maken.php";
             header('Location: '.$newURL);
 
 
@@ -153,7 +166,8 @@ if (isset($_POST) && !empty($_POST)) {
 
 } 
 
-include ('header.php'); ?> 
+include ('header.php'); ?>
+<aside> 
 <p>Vul het formulier hier onder in en maak een tijdlijn!</p>
 <?php
 
@@ -215,11 +229,11 @@ include ('header.php'); ?>
              </fieldset>  
             <fieldset class="form-group">
                 <label for="naam">Start van tijdlijn:</label> *          
-            <input id="jaar_start" class="<?= $jaar_start ?> form-control" type="text"  name="jaar_start" value="<?= isset($_POST['jaar_start']) ? $_POST['jaar_start'] : '' ?>">
+            <input id="jaar_start" class="<?= $jaar_start ?> form-control" type="number"  name="jaar_start" value="<?= isset($_POST['jaar_start']) ? $_POST['jaar_start'] : '' ?>">
              </fieldset>
             <fieldset class="form-group">
                 <label for="naam">Eind van tijdlijn:</label> *
-            <input id="jaar_eind" class="<?= $jaar_eind ?> form-control" type="text" name="jaar_eind" value="<?= isset($_POST['jaar_eind']) ? $_POST['jaar_eind'] : '' ?>">
+            <input id="jaar_eind" class="<?= $jaar_eind ?> form-control" type="number" name="jaar_eind" value="<?= isset($_POST['jaar_eind']) ? $_POST['jaar_eind'] : '' ?>">
              </fieldset>
             <fieldset class="form-group">
                 <label for="naam">Aantal gebeurtenissen op tijdlijn:</label> *
@@ -238,5 +252,5 @@ include ('header.php'); ?>
             <?php } ?>
         
         </form> </br><?php include('loguit.php'); ?>
-</br>
+</br></aside>
  <?php include('footer.php'); ?> 

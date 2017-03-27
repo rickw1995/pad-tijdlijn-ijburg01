@@ -2,7 +2,11 @@
 <html class="no-js" lang="">
 <head>
     <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="http://fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300,800" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/timelify.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <meta name="google-signin-client_id" content="574675912556-cu7gce09im23lanaf05nn1hpk4euib9m.apps.googleusercontent.com">
     <meta http-equiv="content-type" content="application/xhtml-xml; charset=utf-8" />
@@ -32,8 +36,9 @@
 <body>
     <header>
         <nav>
+        <h1>Maak een tijdlijn!</h1>
             <li>
-                <a href="#">
+                <a href="alle-tijdlijn.php">
                    Alle tijdlijnen
                 </a>
             </li>
@@ -45,7 +50,6 @@
         </nav>
     </header>
 
-    <aside style="margin: 0 auto; width: 50%;">
-        <h1>Maak een tijdlijn!</h1>
+        
         
                    
