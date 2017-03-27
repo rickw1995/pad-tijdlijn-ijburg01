@@ -4,7 +4,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once('classes/database.class.php');
-require('classes/recaptchalib.php');
 
 $DB = Database::getInstance();
 
@@ -114,9 +113,9 @@ if (isset($_POST) && !empty($_POST)) {
             if ($last_id->num_rows > 0) {
                 while($row = $last_id->fetch_assoc()) {
                     $last_id2 = $row["id"]; }}
-          
+           // $last_id = var_dump($DB->mysqli->insert_id);
             $aantal_elementen2 = $_POST['aantal_elementen'];
-            for ($x = 1; $x <= $aantal_elementen2; $x++) {
+            for ($x = 0; $x <= $aantal_elementen2; $x++) {
             
                 $sql2 = "INSERT INTO `elementen`
                         SET `tijdlijn_id` = ".$last_id2.",
@@ -127,10 +126,8 @@ if (isset($_POST) && !empty($_POST)) {
 
 
            // echo "0 results";
-            $newURL = "tijdlijn.php";
-            header('Location: '.$newURL);
-
-
+            //header('Location: ?succes');
+ include 'tijdlijn.php'; 
             exit;
 
         } else {
@@ -146,8 +143,6 @@ if (isset($_POST) && !empty($_POST)) {
 
 } 
 
-include ('header.php');
-
         if (isset($_GET['oops'])) { 
         ?>
             <span class="error">
@@ -155,9 +150,17 @@ include ('header.php');
             </span>
 
         <?php 
-        } else {
-            include 'login.php';
+        } else if (isset($_GET['succes'])) { 
         ?>
+            <p class="error">
+                Yes, het ging goed.
+                      
+            </p>
+
+        <?php
+        } else {
+           
+        ?> <p>Vul het formulier hier onder in en maak een tijdlijn!</p>
 
         <form class="form-nieuws" method="post">
             
@@ -208,4 +211,3 @@ include ('header.php');
             <?php } ?>
         
         </form>
-<?php include('footer.php') ?>
