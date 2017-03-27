@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="index.php">
                     Maak een tijdlijn
                 </a>
             </li>

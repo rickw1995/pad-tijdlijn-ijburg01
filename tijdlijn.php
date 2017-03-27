@@ -32,6 +32,7 @@ $last_id3 = $DB->_query($sql4);
 if (isset($_POST) && !empty($_POST)) {
  $boolError2 = false;
     for ($i = 0; $i < count($_POST['titel']); $i++){
+
     $boolError = false;
 
     if (!isset($_POST['titel'][$i]) || trim($_POST['titel'][$i]) == '') {
@@ -52,17 +53,11 @@ if (isset($_POST) && !empty($_POST)) {
         $boolError = true;
     } 
 
-    if (
-        !isset($_POST['element_id'][$i])
-        || trim($_POST['element_id'][$i]) == ''
-        || !preg_match('/^\d+$/', $_POST['element_id'][$i])
-    ) {
-        $element_id  = 'error';
-        $boolError = true;
-    } 
+    
 
 
     if ($boolError === false) {
+
         $sql = "UPDATE `elementen`
                 SET
                 `titel` = '" . $_POST['titel'][$i] . "',
@@ -75,7 +70,8 @@ if (isset($_POST) && !empty($_POST)) {
         if ($DB->_query($sql)) {
          $boolError2 = false;
         // exit;
-
+         $newURL = "succes.php";
+            header('Location: '.$newURL);
 
         } else {
             $boolError2 = true;
@@ -84,15 +80,8 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
     } else {
-        $velden = "Ff alles invullen he";
-    } }if( $boolError2 === false) {
-        $newURL = "succes.php";
-            header('Location: '.$newURL);
-           
-    } else {
-        header('Location: ?oops');
-           exit;
-    }} 
+        $velden = "Niet alle velden zijn ingevuld!";
+    } }} 
 ?> <?php
 include ('header.php');
 
@@ -109,32 +98,29 @@ include ('header.php');
         <?php 
     
         } else {
-           
         ?>
-
        
         <form class="form-nieuws" method="post">
-
-          <?php echo $last_id4; ?>
-
-            <input id="titel2" class="<?= $titel ?> form-control" type="text" placeholder="Titel tijdlijn" name="titel[]" value="<?= isset($_POST['titel']) ? $_POST['titel'] : '' ?>">
+            
+            <input id="titel2" class="<?= $titel ?> form-control" type="text" placeholder="Titel tijdlijn" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>">
             <br>
-            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" placeholder="Beschrijving over tijdlijn" name="beschrijving[]" value="<?= isset($_POST['beschrijving']) ? $_POST['beschrijving'] : '' ?>"></textarea>
+            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" placeholder="Beschrijving over tijdlijn" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>"></textarea>
             <br>
-            <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" placeholder="URL voor afbeelding" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL']) ? $_POST['afbeeldingURL'] : '' ?>">
+            <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" placeholder="URL voor afbeelding" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : '' ?>">
             <br>            
-            <input id="jaar" class="<?= $jaar ?> form-control" type="text" placeholder="Start jaar tijdlijn" name="jaar[]" value="<?= isset($_POST['jaar']) ? $_POST['jaar'] : '' ?>">
-             <input id="element_id" class="<?= $element_id ?> form-control" type="text" placeholder="<?php echo $last_id4 ?>" name="element_id[]" value="<?= isset($_POST['element_id']) ? $_POST['element_id'] : '' ?>">
-            <div class="foutlabel">
-                <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
-                </em>
-            </div>
-            </br>    
+            <input id="jaar" class="<?= $jaar ?> form-control" type="text" placeholder="Start jaar tijdlijn" name="jaar[]" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : '' ?>">
+            <input id="element_id" type="hidden" placeholder="<?php echo $last_id4?>" name="element_id[]" value="<?= isset($_POST['element_id[]']) ? $_POST['element_id[]'] : $last_id4 ?>">
+            
+            </br>     </br>    
 
                      <?php } 
 
                      } ?> <div class="gabutton">
                 <input type="submit" value="Creeer tijdlijn">
+            </div>
+            <div class="foutlabel">
+                <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
+                </em>
             </div>
             
      
