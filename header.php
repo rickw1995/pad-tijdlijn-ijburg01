@@ -14,7 +14,21 @@
     <meta name="title" content="Tijdlijn Ijburg College - PAD IJBURG01" />
  <script src="js/signin.js"></script>
 </head>
+<style>
+    input.error {
+        border: 1px solid #fa6767;
+    }
+    span.error, span.error a {
+        color: #fa6767
+    }
+    label {
+        font-weight: bold;
+    }
+    em.error {
+        color: #fa6767
+    }
 
+</style>
 <body>
     <header>
         <nav>
@@ -33,5 +47,5 @@
 
     <aside style="margin: 0 auto; width: 50%;">
         <h1>Maak een tijdlijn!</h1>
-        <p>Vul het formulier hier onder in en maak een tijdlijn!</p>
+        
                    

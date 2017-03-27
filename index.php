@@ -64,15 +64,6 @@ if (isset($_POST) && !empty($_POST)) {
         $boolError = true;
     }
 
-    if (!isset($_POST['beschrijving']) || trim($_POST['beschrijving']) == '') {
-        $beschrijving = 'error';
-        $boolError = true;
-    } 
-
-    if (!isset($_POST['afbeeldingURL']) || trim($_POST['afbeeldingURL']) == '') {
-        //niet verplicht
-    } 
-
     if (!isset($_POST['jaar_start']) || trim($_POST['jaar_start']) == '') {
         $jaar_start  = 'error';
         $boolError = true;
@@ -157,12 +148,14 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
     } else {
-        $velden = "Niet alle velden zijn ingevuld!";
+        $velden = "Niet alle verplichte velden zijn ingevuld!";
     }
 
 } 
 
-include ('header.php');
+include ('header.php'); ?> 
+<p>Vul het formulier hier onder in en maak een tijdlijn!</p>
+<?php
 
         if (isset($_GET['oops'])) { 
         ?>
@@ -174,14 +167,19 @@ include ('header.php');
         } else {
             include 'login.php';
         ?>
-
+        
         <form class="form-nieuws" method="post" id="Form1" style="display: none;">
-            
-            <input id="docent" class="<?= $docent ?> form-control" type="text" placeholder="Naam docent" name="docent" value="<?= isset($_POST['docent']) ? $_POST['docent'] : '' ?>">
-            <br>
-            <input id="email" class="<?= $email ?> form-control" type="email" placeholder="Email adres docent" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
-            <br>
-            <select id="klas" class="<?= $klas ?> form-control" name="klas">
+            <fieldset class="form-group">
+                <label for="naam">Naam docent:</label> *
+                    <input id="docent" class="<?= $docent ?> form-control" type="text" name="docent" value="<?= isset($_POST['docent']) ? $_POST['docent'] : '' ?>">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">Email adres:</label> *
+                    <input id="email" class="<?= $email ?> form-control" type="email" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">Klas:</label> *
+                    <select id="klas" class="<?= $klas ?> form-control" name="klas">
                 <?php 
                 while ($row = mysqli_fetch_assoc($resultGetKlas)) { ?>
                  <option value="<?= isset($_POST['klas']) ? $_POST['klas'] : $row['id'] ?>">
@@ -189,8 +187,10 @@ include ('header.php');
                  </option>
                 <?php } ?>
                 
-            </select>
-            <br>
+            </select> </fieldset>
+            
+            <fieldset class="form-group">
+                <label for="naam">Vak:</label> *
             <select id="vak" class="<?= $vak ?> form-control" name="vak">
                 <?php
                 while ($row = mysqli_fetch_assoc($resultGetVak)) { ?>
@@ -199,28 +199,40 @@ include ('header.php');
                  </option>
                 <?php } ?>
                 
-            </select>
-            </br></br>
-            <input id="titel" class="<?= $titel ?> form-control" type="text" placeholder="Titel tijdlijn" name="titel" value="<?= isset($_POST['titel']) ? $_POST['titel'] : '' ?>">
-            <br>
-            <textarea id="beschrijving" class="<?= $beschrijving ?> form-control" rows="3" placeholder="Beschrijving over tijdlijn" name="beschrijving" value="<?= isset($_POST['beschrijving']) ? $_POST['beschrijving'] : '' ?>"></textarea>
-            <br>
-            <input id="afbeeldingURL" class="<?= $afbeeldingURL ?> form-control" type="text" placeholder="URL voor afbeelding" name="afbeeldingURL" value="<?= isset($_POST['afbeeldingURL']) ? $_POST['afbeeldingURL'] : '' ?>">
-            <br>            
-            <input id="jaar_start" class="<?= $jaar_start ?> form-control" type="text" placeholder="Start jaar tijdlijn" name="jaar_start" value="<?= isset($_POST['jaar_start']) ? $_POST['jaar_start'] : '' ?>">
-            <br>
-            <input id="jaar_eind" class="<?= $jaar_eind ?> form-control" type="text" placeholder="Eind jaar tijdlijn" name="jaar_eind" value="<?= isset($_POST['jaar_eind']) ? $_POST['jaar_eind'] : '' ?>">
-            <br>
-            <input id="aantal_elementen" class="<?= $aantal_elementen ?> form-control" type="number" placeholder="Aantal elementen in tijdlijn" name="aantal_elementen" value="<?= isset($_POST['aantal_elementen']) ? $_POST['aantal_elementen'] : '' ?>">
-            </br></br>
-
+            </select> </fieldset>
+            
+            <fieldset class="form-group">
+                <label for="naam">Titel van de tijdlijn:</label> *
+            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel" value="<?= isset($_POST['titel']) ? $_POST['titel'] : '' ?>">
+            <br> </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">Beschrijving:</label>
+            <input id="beschrijving" class="<?= $beschrijving ?> form-control" rows="3"  name="beschrijving" value="<?= isset($_POST['beschrijving']) ? $_POST['beschrijving'] : '' ?>">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">URL voor afbeelding:</label>
+            <input id="afbeeldingURL" class="<?= $afbeeldingURL ?> form-control" type="text"  name="afbeeldingURL" value="<?= isset($_POST['afbeeldingURL']) ? $_POST['afbeeldingURL'] : '' ?>">
+             </fieldset>  
+            <fieldset class="form-group">
+                <label for="naam">Start van tijdlijn:</label> *          
+            <input id="jaar_start" class="<?= $jaar_start ?> form-control" type="text"  name="jaar_start" value="<?= isset($_POST['jaar_start']) ? $_POST['jaar_start'] : '' ?>">
+             </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">Eind van tijdlijn:</label> *
+            <input id="jaar_eind" class="<?= $jaar_eind ?> form-control" type="text" name="jaar_eind" value="<?= isset($_POST['jaar_eind']) ? $_POST['jaar_eind'] : '' ?>">
+             </fieldset>
+            <fieldset class="form-group">
+                <label for="naam">Aantal gebeurtenissen op tijdlijn:</label> *
+            <input id="aantal_elementen" class="<?= $aantal_elementen ?> form-control" type="number"  name="aantal_elementen" value="<?= isset($_POST['aantal_elementen']) ? $_POST['aantal_elementen'] : '' ?>">
+             </fieldset>
+            <p><em style="font-size: 0.8em;">* = verplichte velden</em></p>
+            <div class="gabutton">
+                <input type="submit" value="Ga naar volgende stap">
+            </div>
+            </br>
             <div class="foutlabel">
                 <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
                 </em>
-            </div>
-            
-            <div class="gabutton">
-                <input type="submit" value="Creeer tijdlijn">
             </div>
             
             <?php } ?>
