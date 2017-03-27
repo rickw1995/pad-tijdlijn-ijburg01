@@ -152,6 +152,7 @@ if (isset($_POST) && !empty($_POST)) {
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <meta name="google-signin-client_id" content="574675912556-cu7gce09im23lanaf05nn1hpk4euib9m.apps.googleusercontent.com">
     <meta http-equiv="content-type" content="application/xhtml-xml; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <meta http-equiv="content-language" content="NL" />
@@ -159,6 +160,16 @@ if (isset($_POST) && !empty($_POST)) {
     <meta name="robots" content="index, follow">
     <title>Tijdlijn Ijburg College - PAD IJBURG01</title>
     <meta name="title" content="Tijdlijn Ijburg College - PAD IJBURG01" />
+    <script>
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(profile.getName());
+    console.log(profile.getImageUrl());
+    console.log(profile.getEmail()); // This is null if the 'email' scope is not present.
+    console.log(id_token);
+}
+</script>
 </head>
 
 <body>
@@ -199,7 +210,16 @@ if (isset($_POST) && !empty($_POST)) {
         <?php
         } else {
         ?>
-                
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
         <form class="form-nieuws" method="post">
             
             <input id="docent" class="<?= $docent ?> form-control" type="text" placeholder="Naam docent" name="docent" value="<?= isset($_POST['docent']) ? $_POST['docent'] : '' ?>">
@@ -251,6 +271,7 @@ if (isset($_POST) && !empty($_POST)) {
         </form>
 
     </aside>
+            
 
     <footer> 
         <p>Copyright © 2017 LTKort.nl.</p>

@@ -81,8 +81,7 @@ if (isset($_POST) && !empty($_POST)) {
                 while($row = $last_id->fetch_assoc()) {
                     $last_id2 = $row["id"]; 
                     $aantal_elementen3 = $row["aantal_elementen"];}}
-           // $last_id = var_dump($DB->mysqli->insert_id);
-
+         
             $sql4 = "SELECT * FROM `elementen` WHERE `tijdlijn_id` = ".$last_id2."";
             
             $last_id3 = $DB->_query($sql4);
