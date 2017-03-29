@@ -108,7 +108,7 @@ include ('header.php');
 
         ?>
 
-        <form class="form-nieuws" method="post">
+        <form class="form-nieuws" method="post" accept-charset="utf-8">
             <fieldset class="form-group">
                 <label for="naam">Titel van gebeurtenis:</label> *
             <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>">

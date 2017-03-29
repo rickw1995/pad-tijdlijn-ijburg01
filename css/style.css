@@ -95,6 +95,20 @@ li.timeline-item.centered.animated.fadeInUp {
     text-align: center !important;
 }
 
+
+@media screen and (max-width: 768px) {
+li.timeline-item.centered.animated.fadeInUp {
+    width: 100% !important;
+}
+input, select {
+      line-height: 1.5em;
+    width: 150px;
+    margin-left: 1em;
+}
+
+}
+
+
 footer p {
   padding-top: 20px;
   margin: 0 auto;

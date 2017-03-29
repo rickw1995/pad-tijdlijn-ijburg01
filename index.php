@@ -182,7 +182,7 @@ include ('header.php'); ?>
             include 'login.php';
         ?>
         
-        <form class="form-nieuws" method="post" id="Form1" style="display: none;">
+        <form class="form-nieuws" method="post" id="Form1" accept-charset="utf-8" style="display: none;">
             <fieldset class="form-group">
                 <label for="naam">Naam docent:</label> *
                     <input id="docent" class="<?= $docent ?> form-control" type="text" name="docent" value="<?= isset($_POST['docent']) ? $_POST['docent'] : '' ?>">
