@@ -19,6 +19,12 @@ height: 100%;}
 h3 {
   text-transform: uppercase; }
 
+textarea#beschrijving2 {
+  width: 45%;
+  resize: none;
+}
+
+
 nav {
   list-style: none;
   width: 100%;

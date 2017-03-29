@@ -114,9 +114,9 @@ include ('header.php');
             <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>">
             </fieldset>
 <fieldset class="form-group">
-                <label for="naam">Beschrijving van gebeurtenis:</label> *
-            <input id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>">
-           </fieldset>
+                <label for="naam">Beschrijving van gebeurtenis:</label> * </br>
+            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>">
+           </textarea></fieldset>
            <fieldset class="form-group">
                 <label for="naam">URL voor afbeelding:</label>
             <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : '' ?>">
