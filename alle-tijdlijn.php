@@ -9,7 +9,7 @@ $DB = Database::getInstance();
 include ('header.php');
 ?>
  <aside> <ul><?php
-$sqlGetTijdlijn = "SELECT * FROM tijdlijn";
+$sqlGetTijdlijn = "SELECT * FROM `tijdlijn` ORDER BY id DESC";
  $result2 = $DB->_query($sqlGetTijdlijn);
         if ($result2->num_rows > 0) {
             while($row = $result2->fetch_assoc()) {
