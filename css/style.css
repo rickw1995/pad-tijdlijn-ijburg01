@@ -38,4 +38,20 @@ footer {
   text-align: center;
 }
 
+.tijdlijn-afb {
+  max-width: 50%;
+}
+
+.tijdlijn-afb img {
+  width: 100%;
+}
+
+.element-afb {
+  max-width: 50%;
+}
+
+.element-afb img {
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

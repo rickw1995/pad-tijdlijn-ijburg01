@@ -17,9 +17,12 @@ $sqlGetTijdlijn = "SELECT * FROM tijdlijn WHERE id = ".$tijdlijn_id."";
                 $url = $row["url_id"];
                 $vak = $row["vak_id"];
                 $klas = $row["klas_id"];
+                $afbeelding = $row["afbeelding_url"];
                 $docent = $row["docent_id"];
                 $jaarstart = $row["jaar_start"];
-                $jaareind = $row["jaar_eind"]; }
+                $jaareind = $row["jaar_eind"]; 
+
+        }
 }
 
 $getURL = "SELECT url FROM url_tijdlijn WHERE id = ".$url." LIMIT 1";
@@ -48,11 +51,19 @@ $result5 = $DB->_query($getKlas);
             while($row5 = $result5->fetch_assoc()) {
                 $klas2 = $row5["naam"]; }}
 
+echo $afbeelding;
+
+if (!isset($afbeelding) || trim($afbeelding) == '') {
+    $tijdlijn_img  = '<p>Geen afbeelding</p>';
+} else {
+    $tijdlijn_img = '<div class="tijdlijn-afb"><img src="'.$afbeelding.'"></div>';
+                        }
+
 
 include ('header.php');
 ?>
  <div class="container">
-
+                <?php echo $tijdlijn_img; ?>
                 <h2><?php echo $titel; ?></h2>
                 <p><?php echo $beschrijving; ?></p>
                 <p>Gemaakt voor het vak: <?php echo $vak2; ?></p>
@@ -69,8 +80,11 @@ include ('header.php');
                 if ($result->num_rows > 0) {
                     while($row2 = $result->fetch_assoc()) {
 
-                        if (!isset($row2["afbeeldingURL"]) || trim($row2["afbeeldingURL"]) == '') {
-                        $row2["afbeeldingURL"]  = 'Geen afbeelding';
+                        if (!isset($row2["afbeelding_url"]) || trim($row2["afbeelding_url"]) == '') {
+                            $element_img  = 'Geen afbeelding';
+                        } else {
+                            $element_img = '<div class="element-afb">
+                            <img src="'.$row2["afbeelding_url"].'"></div>';
                         }
 
                         ?>
@@ -82,7 +96,7 @@ include ('header.php');
                                 <hr>
                                 <p><?php echo $row2["beschrijving"]; ?></p>
                                 <hr>
-								<p><?php echo $row2["afbeeldingURL"]; ?></p>
+								<p><?php echo $element_img ?></p>
                                 <hr>
                                 <time><?php echo $row2["jaar"]; ?></time>
                             </li>               
