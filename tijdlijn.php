@@ -69,7 +69,7 @@ include ('header.php');
                 <p>Gemaakt voor het vak: <?php echo $vak2; ?></p>
                 <p>Gemaakt voor de klas: <?php echo $klas2; ?></p>
                 <p>Gemaakt door: <?php echo $docent2; ?> (<a href="mailto:<?php echo $docent3; ?>"><?php echo $docent3; ?></a>)</p>
-                <p>Deel de volgende url: <a href="<?php echo $url2; ?>">http://ltkort.nl/<?php echo $url2; ?></a></p>
+                <p>Deel de volgende url: <a href="<?php echo $url2; ?>"><?php echo $_SERVER['HTTP_HOST'].'/tijdlijn'.'/'. $url2; ?></a></p>
                 <p><a href="<?php echo $url3; ?>">Bewerk elementen</a></p>
 
             <div class="timeline">
