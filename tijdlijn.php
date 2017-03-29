@@ -8,6 +8,8 @@ $DB = Database::getInstance();
 
 $tijdlijn_id = $_GET['tid'];
 
+$url3 = 'tijdlijn-edit.php?tid='.$tijdlijn_id;
+
 $sqlGetTijdlijn = "SELECT * FROM tijdlijn WHERE id = ".$tijdlijn_id."";
  $result2 = $DB->_query($sqlGetTijdlijn);
         if ($result2->num_rows > 0) {
@@ -68,6 +70,7 @@ include ('header.php');
                 <p>Gemaakt voor de klas: <?php echo $klas2; ?></p>
                 <p>Gemaakt door: <?php echo $docent2; ?> (<a href="mailto:<?php echo $docent3; ?>"><?php echo $docent3; ?></a>)</p>
                 <p>Deel de volgende url: <a href="<?php echo $url2; ?>">http://ltkort.nl/<?php echo $url2; ?></a></p>
+                <p><a href="<?php echo $url3; ?>">Bewerken</a></p>
 
             <div class="timeline">
                 <h2><?php echo $jaarstart; ?></h2>
