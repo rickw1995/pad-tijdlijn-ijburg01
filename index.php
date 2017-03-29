@@ -241,7 +241,7 @@ include ('header.php'); ?>
              </fieldset>
             <p><em style="font-size: 0.8em;">* = verplichte velden</em></p>
             <div class="gabutton">
-                <input type="submit" value="Ga naar volgende stap">
+                <input type="submit" class="button" value="Ga naar volgende stap">
             </div>
             </br>
             <div class="foutlabel">

@@ -51,8 +51,6 @@ $result5 = $DB->_query($getKlas);
             while($row5 = $result5->fetch_assoc()) {
                 $klas2 = $row5["naam"]; }}
 
-echo $afbeelding;
-
 if (!isset($afbeelding) || trim($afbeelding) == '') {
     $tijdlijn_img  = '<p>Geen afbeelding</p>';
 } else {

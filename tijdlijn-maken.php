@@ -132,7 +132,7 @@ include ('header.php');
                      <?php }
 
                      } ?>   <p><em style="font-size: 0.8em;">* = verplichte velden</em></p><div class="gabutton">
-                <input type="submit" value="Creeër tijdlijn">
+                <input type="submit" class="button" value="Creeër tijdlijn">
             </div>
             </br>
             <div class="foutlabel">
