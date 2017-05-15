@@ -24,6 +24,11 @@
     <meta name="robots" content="index, follow">
     <title>Tijdlijn Ijburg College - PAD IJBURG01</title>
     <meta name="title" content="Tijdlijn Ijburg College - PAD IJBURG01" />
+    <style>.chip .close2 {
+    float: left;
+    font-size: 16px;
+    line-height: 32px;
+    padding-right: 8px;}</style>
 
     <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

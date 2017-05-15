@@ -81,9 +81,20 @@ $result6 = $DB->_query($getKlas);
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><?php echo $titel; ?><i class="material-icons right">close</i></span>
                       <p><?php echo $beschrijving; ?></p>
-                <p><strong>Gemaakt voor het vak:</strong> <?php echo $vak2; ?><br>
-                <strong>Gemaakt voor de klas:</strong> <?php echo $klas2; ?><br>
-                <strong>Gemaakt door:</strong> <?php echo $docent2; ?> (<a href="mailto:<?php echo $docent3; ?>"><?php echo $docent3; ?></a>)</p>
+                  
+                  <div class="chip light-green">
+                    <i class="close2 material-icons">subject</i>
+                    <?php echo $vak2; ?>
+                  </div>
+                  <div class="chip amber">
+                    <i class="close2 material-icons">supervisor_account</i>
+                    <?php echo $klas2; ?> 
+                  </div>
+                  <div class="chip red">
+                    <i class="close2 material-icons">account_circle</i>
+                    <?php echo $docent2; ?> 
+                  </div>
+                
                 <p><a href="tijdlijn-edit.php?tid=<?php echo $tid; ?>">Bewerk tijdlijn</a></p> 
     </div>
                                         
