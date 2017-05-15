@@ -10,9 +10,9 @@
 <html class="no-js" lang="">
 <head>
     <link rel="stylesheet" href="css/normalize.min.css">
-    <link href="http://fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300,800" rel="stylesheet" type="text/css">
+   <!--  <link href="http://fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300,800" rel="stylesheet" type="text/css"> -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+ <!--  <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/timelify.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -24,6 +24,17 @@
     <meta name="robots" content="index, follow">
     <title>Tijdlijn Ijburg College - PAD IJBURG01</title>
     <meta name="title" content="Tijdlijn Ijburg College - PAD IJBURG01" />
+
+    <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+      <!--Import jQuery before materialize.js-->
+     
  <script src="js/signin.js"></script>
 </head>
 <style>
@@ -42,22 +53,20 @@
 
 </style>
 <body>
-    <header>
-        <nav>
-        <h1>Maak een tijdlijn!</h1>
-            <li>
-                <a href="alle-tijdlijn.php">
-                   Alle tijdlijnen
-                </a>
-            </li>
-            <li>
-                <a href="index.php">
-                    Maak een tijdlijn
-                </a>
-            </li>
-        </nav>
-    </header>
 
+   <header>
+
+         <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Maak een tijdlijn!</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
+        <li><a href="index.php"> Maak een tijdlijn</a></li>
+      </ul>
+    </div>
+  </nav>
+        
+    </header>
         
         
                    
