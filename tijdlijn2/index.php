@@ -167,7 +167,7 @@ if (isset($_POST) && !empty($_POST)) {
 } 
 
 include ('header.php'); ?>
-
+<div class="row">
 <?php
 
         if (isset($_GET['oops'])) { 
@@ -181,9 +181,9 @@ include ('header.php'); ?>
             include 'login.php';
         ?>
         
-        <div class="container">
-<div class="row">
-    <form class="form-nieuws col s12" method="post" id="Form1" accept-charset="utf-8" style="display: initial;">
+
+
+    <form class="form-nieuws col s12" method="post" id="Form1" accept-charset="utf-8" style="display: none;">
         <div class="row">
             <div class="input-field col s6">
                 <label for="naam">Naam docent:</label> 
@@ -276,7 +276,7 @@ include ('header.php'); ?>
         
     </form>
 </div>
-</div> </br><?php include('loguit.php'); ?>
+ </br><?php include('loguit.php'); ?>
 </br></aside>
  <?php include('footer.php'); ?> 
 
