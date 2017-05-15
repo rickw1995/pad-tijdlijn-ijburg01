@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-if (!isset($_SESSION["session_user"])) {
-        header("location:index.php");
-    } else {
+//session_start();
+//if (!isset($_SESSION["session_user"])) {
+ //       header("location:index.php");
+ //   } else {
     # code...
-}
+//}
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -14,14 +14,18 @@ require_once('classes/database.class.php');
 $DB = Database::getInstance();
 
 include ('header.php');
+
 ?>
- <aside> <ul><?php
+<div class="row">
+
+ <?php
 $sqlGetTijdlijn = "SELECT * FROM `tijdlijn` ORDER BY id DESC";
  $result2 = $DB->_query($sqlGetTijdlijn);
         if ($result2->num_rows > 0) {
             while($row = $result2->fetch_assoc()) {
                 $titel = $row["titel"];
                 $beschrijving = $row["beschrijving"];
+                $afbeelding = $row["afbeelding_url"];
                 $url = $row["url_id"];
                 $vak = $row["vak_id"];
                 $klas = $row["klas_id"];
@@ -57,24 +61,34 @@ $result6 = $DB->_query($getKlas);
 
 ?>
 
+   <div class="col s6">
+          <div class="card">
+          
                        
-                            <li>     
-								<h2><?php echo $titel; ?></h2>
+            <div class="card-image">
+              <img src="<?php echo $afbeelding; ?>">
+              <span class="card-title"><?php echo $titel; ?></span>
+            </div>
+            <div class="card-content">
                 <p><?php echo $beschrijving; ?></p>
                 <p>Gemaakt voor het vak: <?php echo $vak2; ?></p>
                 <p>Gemaakt voor de klas: <?php echo $klas2; ?></p>
                 <p>Gemaakt door: <?php echo $docent2; ?> (<a href="mailto:<?php echo $docent3; ?>"><?php echo $docent3; ?></a>)</p>
-                <p><a href="<?php echo $url2; ?>"><?php echo $_SERVER['HTTP_HOST'].'/tijdlijn'.'/'. $url2; ?></a></p>
-                            </li>               
-                        
+                </div>
+                <div class="card-action">
+             
+                <a href="<?php echo $url2; ?>"><?php echo $_SERVER['HTTP_HOST'].'/tijdlijn'.'/'. $url2; ?></a></div>
+                                        
+     </div>
+     </div>
+                 
 
                         <?php
                     }}}}}}}}}
 }
-                ?></ul>
+                ?>
                 
             </div>
-     
-</aside>
+     </div>
 
 <?php include('footer.php') ?>
