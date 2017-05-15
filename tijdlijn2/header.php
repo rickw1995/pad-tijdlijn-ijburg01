@@ -34,14 +34,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
       <!--Import jQuery before materialize.js-->
-     
- <script src="js/signin.js"></script>
 
- <script>
-  $(document).ready(function() {
-        $(".button-collapse").sideNav();
-  });
- </script>
+
+
 </head>
 <style>
     input.error {
@@ -61,22 +56,27 @@
 <body>
 
    <header>
+   
   <nav>
+  <div class="row col s12">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Maak een tijdlijn!</a>
+      <a href="index.php" class="brand-logo center">Tijdlijn!</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-<li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
-        <li><a href="index.php"> Maak een tijdlijn</a></li>
+      <ul class="left hide-on-med-and-down">
+      <li><a href="index.php"><i class="material-icons prefix">home</i></a></li>
+        <li><a href="index.php">Bekijk tijdlijnen</a></li>
+        <li><a href="maak-tijdlijn.php"> Maak een tijdlijn</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-<li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
-        <li><a href="index.php"> Maak een tijdlijn</a></li>
+<li><a href="index.php">Bekijk tijdlijnen</a></li>
+        <li><a href="maak-tijdlijn.php"> Maak een tijdlijn</a></li>
       </ul>
-    </div>
+    </div>  </div>
   </nav>
+
         
     </header>
                 <div class="container">
+                <br>
         
                    

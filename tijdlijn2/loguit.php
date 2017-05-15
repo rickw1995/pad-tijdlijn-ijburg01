@@ -1,5 +1,10 @@
+<div class="row col s12">
+
 <div id="GoogleLoguit" style="display: none;">
-      <a href="#" onclick="signOut();">Log uit</a>
+      </br>
+       <button class="btn waves-effect light-blue accent-4 button" onlclick="signOut()" value="Log uit"><i class="material-icons right">lock</i>Uitloggen</button>
+
+       </br>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -21,3 +26,4 @@
 
     ?>
 </script></div>
+</div>
