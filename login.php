@@ -19,6 +19,6 @@ ini_set('display_errors', 1);
                     $_SESSION ['session_user']=$user;
 
                     header("location:tijdlijn-maken.php")
-?>
-                    }
+
+                    } ?>
 </div>
