@@ -116,22 +116,22 @@ include ('header.php');
         ?>
 
         <form class="form-nieuws" method="post" accept-charset="utf-8">
-            <fieldset class="form-group">
+            <div class="input-field"> <div class="input-field">
                 <label for="naam">Titel van gebeurtenis:</label> *
-            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>">
-            </fieldset>
-<fieldset class="form-group">
+            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>"> </div>
+           </div>
+            <div class="input-field">
                 <label for="naam">Beschrijving van gebeurtenis:</label> * </br>
             <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>">
            </textarea></fieldset>
-           <fieldset class="form-group">
+           <div class="input-field">
                 <label for="naam">URL voor afbeelding:</label>
             <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : '' ?>">
-            </fieldset>
-            <fieldset class="form-group">
+           </div>
+            <div class="input-field">
                 <label for="naam">Jaar van gebeurtenis:</label> *  
             <input id="jaar" class="<?= $jaar ?> form-control" type="number" name="jaar[]" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : '' ?>">
-            </fieldset>
+           </div>
             <input id="element_id" type="hidden" name="element_id[]" value="<?= isset($_POST['element_id[]']) ? $_POST['element_id[]'] : $last_id4 ?>">
             
             </br>     </br>    
@@ -146,7 +146,51 @@ include ('header.php');
                 <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
                 </em>
             </div>
-            
      
         </form> </aside>
+
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled">Disabled</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          This is an inline input field:
+          <div class="input-field inline">
+            <input id="email" type="email" class="validate">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
       <?php } include('footer.php') ?>

@@ -1,12 +1,5 @@
 <?php
 
-//rick
-/* session_start();
-if (!isset($_SESSION["session_user"])) {
-        header("location:index.php");
-    } else { */
-
-        
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -20,9 +13,11 @@ $afbeeldingURL = '';
 $jaar = '';
 $element_id = '';
 
+$tijdlijn_id = $_GET['tid'];
+
 $velden = '';
 $boolError2 = '';
-$sql3 = "SELECT `id` , `titel`, `aantal_elementen` FROM `tijdlijn` ORDER BY id DESC LIMIT 0, 1";
+$sql3 = "SELECT `id` , `titel`, `aantal_elementen` FROM `tijdlijn` WHERE id = ".$tijdlijn_id."";
 $last_id = $DB->_query($sql3);
 
 if ($last_id->num_rows > 0) {
@@ -33,7 +28,7 @@ if ($last_id->num_rows > 0) {
     }
 }
 
-$sql4 = "SELECT * FROM `elementen` WHERE `tijdlijn_id` = ".$last_id2."";
+$sql4 = "SELECT * FROM `elementen` WHERE `tijdlijn_id` = ".$tijdlijn_id."";
 
 $last_id3 = $DB->_query($sql4);
 
@@ -82,7 +77,7 @@ if (isset($_POST) && !empty($_POST)) {
         if ($DB->_query($sql)) {
          $boolError2 = false;
         // exit;
-         $newURL = "succes.php";
+         $newURL = "succes2.php?tid=".$tijdlijn_id;
             header('Location: '.$newURL);
 
         } else {
@@ -98,10 +93,14 @@ if (isset($_POST) && !empty($_POST)) {
 include ('header.php');
 ?>
 <aside>
-<p> Vul hier de gebeurtenissen voor de tijdlijn: <strong><?php echo $titelTijd ?></strong> in.</p> <?php
+<p> Bewerk hier de gebeurtenissen voor de tijdlijn: <strong><?php echo $titelTijd ?></strong>.</p> <?php
      if ($last_id3->num_rows > 0) {
         while($row2 = $last_id3->fetch_assoc()) {
             $last_id4 = $row2["id"]; 
+            $titelP = $row2["titel"]; 
+            $beschrijvingP = $row2["beschrijving"]; 
+            $afbeeldingURLP= $row2["afbeelding_url"]; 
+            $jaarP = $row2["jaar"]; 
 
         if (isset($_GET['oops'])) { 
         ?>
@@ -118,19 +117,19 @@ include ('header.php');
         <form class="form-nieuws" method="post" accept-charset="utf-8">
             <fieldset class="form-group">
                 <label for="naam">Titel van gebeurtenis:</label> *
-            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : '' ?>">
+            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : $titelP ?>">
             </fieldset>
 <fieldset class="form-group">
                 <label for="naam">Beschrijving van gebeurtenis:</label> * </br>
-            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="3" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>">
-           </textarea></fieldset>
+            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="4" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>"> <?php echo $beschrijvingP ?> </textarea>
+           </fieldset>
            <fieldset class="form-group">
                 <label for="naam">URL voor afbeelding:</label>
-            <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : '' ?>">
+            <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : $afbeeldingURLP ?>">
             </fieldset>
             <fieldset class="form-group">
                 <label for="naam">Jaar van gebeurtenis:</label> *  
-            <input id="jaar" class="<?= $jaar ?> form-control" type="number" name="jaar[]" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : '' ?>">
+            <input id="jaar" class="<?= $jaar ?> form-control" type="number" name="jaar[]" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : $jaarP ?>">
             </fieldset>
             <input id="element_id" type="hidden" name="element_id[]" value="<?= isset($_POST['element_id[]']) ? $_POST['element_id[]'] : $last_id4 ?>">
             
@@ -139,7 +138,7 @@ include ('header.php');
                      <?php }
 
                      } ?>   <p><em style="font-size: 0.8em;">* = verplichte velden</em></p><div class="gabutton">
-                <input type="submit" class="button" value="Creeër tijdlijn">
+                <input type="submit" class="button" value="Bewerk tijdlijn">
             </div>
             </br>
             <div class="foutlabel">
