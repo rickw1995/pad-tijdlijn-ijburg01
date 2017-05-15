@@ -2,7 +2,7 @@
    <!-- <footer> 
         <p>Copyright © 2017 PAD-Ijburg01 - HvA.</p>
     </footer> -->
-
+</div>
      <footer class="page-footer">
           <div class="footer-copyright">
             <div class="container">
