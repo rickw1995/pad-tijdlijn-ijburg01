@@ -283,6 +283,7 @@ include ('header.php'); ?>
  <script>
   $(document).ready(function() {
     $('select').material_select();
+        $(".button-collapse").sideNav();
   });
 
    $('.datepicker').pickadate({

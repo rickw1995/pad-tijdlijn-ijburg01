@@ -36,6 +36,12 @@
       <!--Import jQuery before materialize.js-->
      
  <script src="js/signin.js"></script>
+
+ <script>
+  $(document).ready(function() {
+        $(".button-collapse").sideNav();
+  });
+ </script>
 </head>
 <style>
     input.error {
@@ -55,12 +61,16 @@
 <body>
 
    <header>
-
-         <nav>
+  <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Maak een tijdlijn!</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+<li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
+        <li><a href="index.php"> Maak een tijdlijn</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+<li><a href="alle-tijdlijn.php">Alle tijdlijnen</a></li>
         <li><a href="index.php"> Maak een tijdlijn</a></li>
       </ul>
     </div>
