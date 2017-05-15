@@ -22,6 +22,10 @@
     <meta http-equiv="content-language" content="NL" />
     <meta name="language" content="NL" />
     <meta name="robots" content="index, follow">
+        <link rel="stylesheet" href="css/timeline.css?v1">
+    <!--FONT-->
+    <link rel="stylesheet" href="css/fonts/font.default.css?v1">
+    <!-- Style-->
     <title>Tijdlijn Ijburg College - PAD IJBURG01</title>
     <meta name="title" content="Tijdlijn Ijburg College - PAD IJBURG01" />
     <style>.chip .close2 {
@@ -65,23 +69,22 @@
   <nav>
   <div class="row col s12">
     <div class="nav-wrapper">
-      <a href="index.php" class="brand-logo center">Tijdlijn!</a>
+      <a href="/tijdlijn/tijdlijn2/index.php" class="brand-logo center">Tijdlijn!</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="left hide-on-med-and-down">
-      <li><a href="index.php"><i class="material-icons prefix">home</i></a></li>
-        <li><a href="index.php">Bekijk tijdlijnen</a></li>
-        <li><a href="maak-tijdlijn.php"> Maak een tijdlijn</a></li>
+      <li><a href="/tijdlijn//tijdlijn2/index.php"><i class="material-icons prefix">home</i></a></li>
+        <li><a href="/tijdlijn2/index.php">Bekijk tijdlijnen</a></li>
+        <li><a href="/tijdlijn/tijdlijn2/maak-tijdlijn.php"> Maak een tijdlijn</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
 <li><a href="index.php">Bekijk tijdlijnen</a></li>
-        <li><a href="maak-tijdlijn.php"> Maak een tijdlijn</a></li>
+        <li><a href="/tijdlijn/tijdlijn2/maak-tijdlijn.php"> Maak een tijdlijn</a></li>
       </ul>
     </div>  </div>
   </nav>
 
         
     </header>
-                <div class="container">
-                <br>
+    
         
                    
