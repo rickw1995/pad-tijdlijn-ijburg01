@@ -16,7 +16,6 @@ if (typeof(jQuery) === 'undefined') {
 }
 
 
-  $('#beschrijving').val('New Text');
   $('#beschrijving').trigger('autoresize');
 
 ;/*

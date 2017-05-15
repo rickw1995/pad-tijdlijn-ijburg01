@@ -29,7 +29,6 @@ if ($last_id->num_rows > 0) {
 }
 
 $sql4 = "SELECT * FROM `elementen` WHERE `tijdlijn_id` = ".$tijdlijn_id."";
-
 $last_id3 = $DB->_query($sql4);
 
 if (isset($_POST) && !empty($_POST)) {
