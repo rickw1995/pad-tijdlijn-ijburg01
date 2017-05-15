@@ -92,60 +92,60 @@ if (isset($_POST) && !empty($_POST)) {
 ?> <?php
 include ('header.php');
 ?>
-<aside>
-<p> Bewerk hier de gebeurtenissen voor de tijdlijn: <strong><?php echo $titelTijd ?></strong>.</p> <?php
-     if ($last_id3->num_rows > 0) {
-        while($row2 = $last_id3->fetch_assoc()) {
-            $last_id4 = $row2["id"]; 
-            $titelP = $row2["titel"]; 
-            $beschrijvingP = $row2["beschrijving"]; 
-            $afbeeldingURLP= $row2["afbeelding_url"]; 
-            $jaarP = $row2["jaar"]; 
 
-        if (isset($_GET['oops'])) { 
-        ?>
-            <span class="error">
-                Oeps, iets ging fout.
-            </span>
-    
-        <?php 
-    
-        } else {
+        <p>Bewerk hier de gebeurtenissen voor de tijdlijn: <strong><?php echo $titelTijd ?></strong>.</p><?php
+             if ($last_id3->num_rows > 0) {
+                while($row2 = $last_id3->fetch_assoc()) {
+                    $last_id4 = $row2["id"]; 
+                    $titelP = $row2["titel"]; 
+                    $beschrijvingP = $row2["beschrijving"]; 
+                    $afbeeldingURLP= $row2["afbeelding_url"]; 
+                    $jaarP = $row2["jaar"]; 
 
-        ?>
-
-        <form class="form-nieuws" method="post" accept-charset="utf-8">
-            <fieldset class="form-group">
-                <label for="naam">Titel van gebeurtenis:</label> *
-            <input id="titel" class="<?= $titel ?> form-control" type="text" name="titel[]" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : $titelP ?>">
-            </fieldset>
-<fieldset class="form-group">
-                <label for="naam">Beschrijving van gebeurtenis:</label> * </br>
-            <textarea id="beschrijving2" class="<?= $beschrijving ?> form-control" rows="4" name="beschrijving[]" value="<?= isset($_POST['beschrijving[]']) ? $_POST['beschrijving[]'] : '' ?>"> <?php echo $beschrijvingP ?> </textarea>
-           </fieldset>
-           <fieldset class="form-group">
-                <label for="naam">URL voor afbeelding:</label>
-            <input id="afbeeldingURL2" class="<?= $afbeeldingURL ?> form-control" type="text" name="afbeeldingURL[]" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : $afbeeldingURLP ?>">
-            </fieldset>
-            <fieldset class="form-group">
-                <label for="naam">Jaar van gebeurtenis:</label> *  
-            <input id="jaar" class="<?= $jaar ?> form-control" type="number" name="jaar[]" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : $jaarP ?>">
-            </fieldset>
-            <input id="element_id" type="hidden" name="element_id[]" value="<?= isset($_POST['element_id[]']) ? $_POST['element_id[]'] : $last_id4 ?>">
+                if (isset($_GET['oops'])) { 
+                ?> <span class="error">Oeps, iets ging fout.</span> <?php 
             
-            </br>     </br>    
+                } else {
 
-                     <?php }
-
-                     } ?>   <p><em style="font-size: 0.8em;">* = verplichte velden</em></p><div class="gabutton">
-                <input type="submit" class="button" value="Bewerk tijdlijn">
+                ?>
+        <form accept-charset="utf-8" class="form-nieuws col s12" method="post">
+            <div class="row">
+                <div class="col s12">
+                    <h5>Element #<?php echo $last_id4 ?></h5>
+                </div>
             </div>
-            </br>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="naam">Titel van gebeurtenis:</label> <input class="<?= $titel ?> form-control" id="titel" name="titel[]" type="text" value="<?= isset($_POST['titel[]']) ? $_POST['titel[]'] : $titelP ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="naam">Beschrijving van gebeurtenis:</label> 
+                    <textarea class="materialize-textarea <?= $beschrijving ?> form-control" id="beschrijving2" name="beschrijving[]" rows="4"><?php echo $beschrijvingP ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="naam">URL voor afbeelding:</label> <input class="<?= $afbeeldingURL ?> form-control" id="afbeeldingURL2" name="afbeeldingURL[]" type="text" value="<?= isset($_POST['afbeeldingURL[]']) ? $_POST['afbeeldingURL[]'] : $afbeeldingURLP ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="naam">Jaar van gebeurtenis:</label> <input class="<?= $jaar ?> form-control" id="jaar" name="jaar[]" type="number" value="<?= isset($_POST['jaar[]']) ? $_POST['jaar[]'] : $jaarP ?>">
+                </div>
+            </div><input id="element_id" name="element_id[]" type="hidden" value="<?= isset($_POST['element_id[]']) ? $_POST['element_id[]'] : $last_id4 ?>"><br>
+            <br>
+            <?php }
+
+                                 } ?>
+            <p><em style="font-size: 0.8em;">* = verplichte velden</em></p>
+            <div class="gabutton">
+                <button class=" btn waves-effect waves-light button" type="submit" value="Bewerk tijdlijn"><i class="material-icons right">send</i> Bewerk tijdlijn</button>
+            </div><br>
             <div class="foutlabel">
                 <em class="<?= ($velden) ? 'error' : '' ?>"><?= ($velden) ? $velden : '' ?>
                 </em>
             </div>
-            
-     
-        </form> </aside>
-      <?php } include('footer.php') ?>
+        </form>
+   <?php } include('footer.php') ?>
