@@ -1,6 +1,6 @@
 
     <footer> 
-        <p>Copyright © 2017 PAD-Ijburg01.</p>
+        <p>Copyright © 2017 PAD-Ijburg01 - HvA.</p>
     </footer>
         
     <script src="https://apis.google.com/js/platform.js" async defer></script>
